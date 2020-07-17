@@ -40,8 +40,8 @@
 
             loadJSON((response) => {
             // Parse JSON string into object
-                let actual_JSON = JSON.parse(response);
-                console.log(actual_JSON)
+                const geoData = JSON.parse(response);
+                console.log(geoData)
             });
 
             // The location of Cebu
@@ -52,5 +52,5 @@
             //   var marker = new google.maps.Marker({position: cebu, map: map});
         }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_fMdO9a6MtmUAdFF0KnTihdChudd0MhY&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key= AIzaSyCdAb96ekVOdqHZv8O3rMIwxKf_WdRA65M&callback=initMap"></script>
 </html>
