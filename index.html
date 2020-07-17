@@ -1,32 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      /* Set the size of the div element that contains the map */
-      #map {
-        height: 400px;  /* The height is 400 pixels */
-        width: 100%;  /* The width is the width of the web page */
-       }
-    </style>
-  </head>
-  <body>
-    <h3>My Google Maps Demo</h3>
-    <!--The div element for the map -->
-    <div id="map"></div>
-  </body>
-  <script>
-    // Initialize and add the map
-    function initMap() {
-      // The location of Uluru
-      var cebu = {lat: 10.488, lng: 123.880};
-      // The map, centered at Uluru
-      var map = new google.maps.Map(
-          document.getElementById('map'), {zoom: 4, center: cebu});
-      // The marker, positioned at Uluru
-      var marker = new google.maps.Marker({position: cebu, map: map});
-    }
-        </script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_fMdO9a6MtmUAdFF0KnTihdChudd0MhY&callback=initMap">
+    <head>
+        <style>
+            /* Set the size of the div element that contains the map */
+            #map {
+                height: 100%;  /* The height is 400 pixels */
+                width: 100%;  /* The width is the width of the web page */
+            }
+
+            body, html {
+                margin: 0px;
+                height: 100%;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <!--The div element for the map -->
+        <div id="map"></div>
+    </body>
+    <script>
+        const loadJSON = (callback) => {
+            let xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', 'my_data.json', true);
+            // Replace 'my_data' with the path to your file
+            xobj.onreadystatechange = () => {
+                if (xobj.readyState === 4 && xobj.status === 200) {
+                    // Required use of an anonymous callback
+                    // as .open() will NOT return a value but simply returns undefined in asynchronous mode
+                    callback(xobj.responseText);
+                }
+            };
+            xobj.send(null);
+        }
+
+        // Initialize and add the map
+        function initMap() {
+
+            loadJSON((response) => {
+            // Parse JSON string into object
+                let actual_JSON = JSON.parse(response);
+                console.log(actual_JSON)
+            });
+
+            // The location of Cebu
+            const cebu = {lat: 10.488, lng: 123.880};
+            // The map, centered at Cebu
+            const map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 10, center: cebu});
+            //   var marker = new google.maps.Marker({position: cebu, map: map});
+        }
     </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_fMdO9a6MtmUAdFF0KnTihdChudd0MhY&callback=initMap"></script>
 </html>
