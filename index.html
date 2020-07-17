@@ -51,10 +51,6 @@
             xobj.send(null);
         }
 
-        loadJSON((response) => {
-            // Parse JSON string into object
-            const geoData = JSON.parse(response);
-        });
 
         // Initialize and add the map
         function initMap() {
@@ -72,14 +68,18 @@
 
             });
 
-            for (let ctr = 0; ctr < geoData.features.length; ctr++){
-                let coords = geoData.features[ctr].geometry.coordinates;
-                let latLng = new google.maps.LatLng(coords[0],coords[1]);
-                let marker = new google.maps.Marker({
-                    position: latLng,
-                    map: map
-                });
-            }
+            loadJSON((response) => {
+                // Parse JSON string into object
+                const geoData = JSON.parse(response);
+                for (let ctr = 0; ctr < geoData.features.length; ctr++){
+                    let coords = geoData.features[ctr].geometry.coordinates;
+                    let latLng = new google.maps.LatLng(coords[0],coords[1]);
+                    let marker = new google.maps.Marker({
+                        position: latLng,
+                        map: map
+                    });
+                }
+            });
         }
 
     </script>
