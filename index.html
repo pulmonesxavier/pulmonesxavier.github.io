@@ -142,7 +142,7 @@
                 // Parse JSON string into object
                 const geoData = JSON.parse(response);
                 deleteMarkers();
-                for (let ctr1 = 0; ctr < filter_type.length; ctr++){
+                for (let ctr1 = 0; ctr1 < filter_type.length; ctr1++){
                     let new_marker = geoData.features.filter((data)=>{
                         return data.properties.type === filter_type[ctr].id
                     });
