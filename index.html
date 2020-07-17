@@ -48,10 +48,11 @@
             loadJSON((response) => {
             // Parse JSON string into object
                 const geoData = JSON.parse(response);
+                console.log(geoData.length);
                 for (let ctr = 0; ctr < geoData.length; ctr++){
                     let coords = geoData.geometry.coordinates;
                     let latLng = {lat: geoData.geometry.coordinates[0], lng: geoData.geometry.coordinates[0]};
-                    console.log(latLang);
+                    console.log(geoData.length);
                     let marker = new google.maps.Marker({
                     position: latLng,
                     map: map
