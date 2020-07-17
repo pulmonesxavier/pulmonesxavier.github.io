@@ -70,7 +70,14 @@
                 map.setZoom(14);
                 // map.setCenter(marker.getPosition());
                 map.panTo(location);
-                console.log(marker)
+                loadJSON((response) => {
+                    // Parse JSON string into object
+                    const geoData = JSON.parse(response);
+                    let restaurant_data = geoData.features.filter((data)=>{
+                        return data.properties.name === marker.title;
+                    });
+                    console.log(restaurant_data);
+                });
             });
 
             markers.push(marker);
@@ -132,7 +139,7 @@
                 const geoData = JSON.parse(response);
                 deleteMarkers();
                 for (let ctr = 0; ctr < filter_type.length; ctr++){
-                    new_marker = geoData.features.filter((data)=>{
+                    let new_marker = geoData.features.filter((data)=>{
                         return data.properties.type === filter_type[ctr].id
                     });
                     for (let ctr = 0; ctr < new_marker.length; ctr++){
