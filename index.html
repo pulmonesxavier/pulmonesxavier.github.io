@@ -29,14 +29,30 @@
             <!--The div element for the map -->
             <div id="map"></div>
             <div id="pane">
-                <input type="checkbox" name="filter" id="casual-dining">
+                <input type="checkbox" name="filter" id="casual-dining" onchange="filterMarkers(this)">
                 <label for='casual-dining'>Casual Dining</label>
-                <input type="checkbox" name="filter" id="fine-dining">
+                <input type="checkbox" name="filter" id="fine-dining" onchange="filterMarkers(this)">
                 <label for='fine-dining'>Fine Dining</label>
             </div>
         </div>
     </body>
     <script>
+
+        // The location of Cebu
+        const cebu = {lat: 10.488, lng: 123.880};
+        // The map, centered at Cebu
+        const map = new google.maps.Map(
+
+            document.getElementById('map'), {
+            zoom: 10, center: cebu,
+            mapTypeControl: false,
+            streetViewControl: false,
+            fullscreenControl: false
+
+        });
+
+        let markers = []
+
         const loadJSON = (callback) => {
             let xobj = new XMLHttpRequest();
             xobj.overrideMimeType("application/json");
@@ -51,22 +67,40 @@
             xobj.send(null);
         }
 
+        // Adds a marker to the map and push to the array.
+        function addMarker(location) {
+            let marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            markers.push(marker);
+        }
+
+        // Sets the map on all markers in the array.
+        function setMapOnAll(map) {
+            for (let i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+
+        // Removes the markers from the map, but keeps them in the array.
+        function clearMarkers() {
+            setMapOnAll(null);
+        }
+
+        // Shows any markers currently in the array.
+        function showMarkers() {
+            setMapOnAll(map);
+        }
+
+        // Deletes all markers in the array by removing references to them.
+        function deleteMarkers() {
+            clearMarkers();
+            markers = [];
+        }
 
         // Initialize and add the map
         function initMap() {
-
-            // The location of Cebu
-            const cebu = {lat: 10.488, lng: 123.880};
-            // The map, centered at Cebu
-            const map = new google.maps.Map(
-
-                document.getElementById('map'), {
-                zoom: 10, center: cebu,
-                mapTypeControl: false,
-                streetViewControl: false,
-                fullscreenControl: false
-
-            });
 
             loadJSON((response) => {
                 // Parse JSON string into object
@@ -74,12 +108,23 @@
                 for (let ctr = 0; ctr < geoData.features.length; ctr++){
                     let coords = geoData.features[ctr].geometry.coordinates;
                     let latLng = new google.maps.LatLng(coords[0],coords[1]);
-                    let marker = new google.maps.Marker({
-                        position: latLng,
-                        map: map
-                    });
+                    addMarker(latLng);
+                    // let marker = new google.maps.Marker({
+                    //     position: latLng,
+                    //     map: map
+                    // });
                 }
             });
+
+            console.log(markers)
+        }
+
+        function updateFilters(){
+
+        }
+
+        function filterMarkers(test){
+            (document.querySelectorAll("input:checked"))
         }
 
     </script>
