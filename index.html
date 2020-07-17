@@ -146,10 +146,10 @@
                     let new_marker = geoData.features.filter((data)=>{
                         return data.properties.type === filter_type[ctr].id
                     });
-                    for (let ctr2 = 0; ctr2 < new_marker.length; ctr++){
-                        let coords = new_marker[ctr].geometry.coordinates;
+                    for (let ctr2 = 0; ctr2 < new_marker.length; ctr2++){
+                        let coords = new_marker[ctr2].geometry.coordinates;
                         let latLng = new google.maps.LatLng(coords[0],coords[1]);
-                        addMarker(latLng, ctr);
+                        addMarker(latLng, new_marker[ctr2].properties.id);
                     }
                 }
                 showMarkers();

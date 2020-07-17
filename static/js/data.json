@@ -9,6 +9,7 @@
                 "coordinates": [10.312892, 123.904507]
             },
             "properties": {
+                "id": 0,
                 "name": "The Pig and Palm",
                 "type": "casual-dining",
                 "specialty": ["Cocktails", "Pork Belly"]
@@ -21,6 +22,7 @@
                 "coordinates": [10.328115, 123.909861]
             },
             "properties": {
+                "id": 1,
                 "name": "Olio Restaurant",
                 "type": "fine-dining",
                 "specialty": ["Seafood", "Steak"]
