@@ -40,18 +40,9 @@
 
         // The location of Cebu
         const cebu = {lat: 10.488, lng: 123.880};
-        // The map, centered at Cebu
-        const map = new google.maps.Map(
+        let map;
 
-            document.getElementById('map'), {
-            zoom: 10, center: cebu,
-            mapTypeControl: false,
-            streetViewControl: false,
-            fullscreenControl: false
-
-        });
-
-        let markers = []
+        let markers = [];
 
         const loadJSON = (callback) => {
             let xobj = new XMLHttpRequest();
@@ -101,6 +92,16 @@
 
         // Initialize and add the map
         function initMap() {
+
+            // The map, centered at Cebu
+            const map = new google.maps.Map(
+                document.getElementById('map'), {
+                zoom: 10, center: cebu,
+                mapTypeControl: false,
+                streetViewControl: false,
+                fullscreenControl: false
+
+            });
 
             loadJSON((response) => {
                 // Parse JSON string into object
