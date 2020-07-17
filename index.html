@@ -121,7 +121,7 @@
         }
 
         function filterMarkers(test){
-            let new_markers = []
+            // let new_markers = []
             let filter_type = document.querySelectorAll("input:checked")
 
             deleteMarkers();
@@ -130,13 +130,22 @@
                 // Parse JSON string into object
                 const geoData = JSON.parse(response);
 
+                // for (let ctr = 0; ctr < filter_type.length; ctr++){
+                //     new_markers = new_markers.concat(geoData.features.filter((data)=>{
+                //         return data.properties.type === filter_type[ctr].id
+                //     }));
+                // }
+
                 for (let ctr = 0; ctr < filter_type.length; ctr++){
-                    new_markers = new_markers.concat(geoData.features.filter((data)=>{
+                    new_marker = geoData.features.filter((data)=>{
                         return data.properties.type === filter_type[ctr].id
-                    }));
+                    });
+                    let coords = new_marker.geometry.coordinates;
+                    let latLng = new google.maps.LatLng(coords[0],coords[1]);
+                    addMarker(latLng);
                 }
 
-                console.log(new_markers);
+                // console.log(new_markers);
 
                 // for (let ctr = 0; ctr < geoData.features.length; ctr++){
                 //     let coords = geoData.features[ctr].geometry.coordinates;
