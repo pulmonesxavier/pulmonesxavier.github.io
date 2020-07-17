@@ -29,9 +29,9 @@
             <!--The div element for the map -->
             <div id="map"></div>
             <div id="pane">
-                <input type="checkbox" name="filter" id="casual-dining" onchange="filterMarkers(this)">
+                <input type="checkbox" name="filter" id="casual-dining" onchange="filterMarkers()">
                 <label for='casual-dining'>Casual Dining</label>
-                <input type="checkbox" name="filter" id="fine-dining" onchange="filterMarkers(this)">
+                <input type="checkbox" name="filter" id="fine-dining" onchange="filterMarkers()">
                 <label for='fine-dining'>Fine Dining</label>
             </div>
         </div>
@@ -120,13 +120,35 @@
             console.log(markers)
         }
 
-        function updateFilters(){
-
-        }
-
         function filterMarkers(test){
-            // (document.querySelectorAll("input:checked"))
-            clearMarkers();
+            let new_markers = []
+            let filter_type = document.querySelectorAll("input:checked")
+
+            deleteMarkers();
+
+            loadJSON((response) => {
+                // Parse JSON string into object
+                const geoData = JSON.parse(response);
+
+                for (let ctr = 0; ctr < filter_type.length; ctr++){
+                    new_markers.push(geoData.features.filter((data)=>{
+                        return data.properties.type === 'filter_type[ctr].id'
+                    }));
+                }
+
+                console.log(new_markers);
+
+                // for (let ctr = 0; ctr < geoData.features.length; ctr++){
+                //     let coords = geoData.features[ctr].geometry.coordinates;
+                //     let latLng = new google.maps.LatLng(coords[0],coords[1]);
+                //     addMarker(latLng);
+                    // let marker = new google.maps.Marker({
+                    //     position: latLng,
+                    //     map: map
+                    // });
+                // }
+            });
+            showMarkers()
         }
 
     </script>

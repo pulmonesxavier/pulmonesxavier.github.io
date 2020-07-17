@@ -10,7 +10,7 @@
             },
             "properties": {
                 "name": "The Pig and Palm",
-                "type": "Casual Dining",
+                "type": "casual-dining",
                 "specialty": ["Cocktails", "Pork Belly"]
             }
         },
@@ -22,7 +22,7 @@
             },
             "properties": {
                 "name": "Olio Restaurant",
-                "type": "Fine Dining",
+                "type": "fine-dining",
                 "specialty": ["Seafood", "Steak"]
             }
         }
