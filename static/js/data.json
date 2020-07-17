@@ -3,10 +3,11 @@
     "type": "Feature",
     "geometry": {
         "type": "Point",
-        "coordinates": [-75.15065, 39.94897]
+        "coordinates": [10.312892, 123.904507]
     },
     "properties": {
-        "name": "Congress Hall"
-
+        "name": "The Pig and Palm",
+        "type": "Casual Dining",
+        "specialty": ["Cocktails", "Pork Belly"]
     }
 }

@@ -41,7 +41,14 @@
             loadJSON((response) => {
             // Parse JSON string into object
                 const geoData = JSON.parse(response);
-                console.log(geoData)
+                for (let ctr = 0; ctr < geoData.length; ctr++){
+                    let coords = geoData.geometry.coordinates;
+                    let latLng = new google.maps.LatLng(coords[1],coords[0]);
+                    let marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map
+                    });
+                }
             });
 
             // The location of Cebu
