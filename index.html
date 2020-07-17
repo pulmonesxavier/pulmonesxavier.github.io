@@ -50,7 +50,7 @@
                 const geoData = JSON.parse(response);
                 for (let ctr = 0; ctr < geoData.length; ctr++){
                     let coords = geoData.geometry.coordinates;
-                    let latLng = new google.maps.LatLng(coords[1],coords[0]);
+                    let latLng = {lat: geoData.geometry.coordinates[0], lng: geoData.geometry.coordinates[0]};
                     let marker = new google.maps.Marker({
                     position: latLng,
                     map: map
