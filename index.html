@@ -132,11 +132,11 @@
 
                 for (let ctr = 0; ctr < filter_type.length; ctr++){
                     new_markers = (geoData.features.filter((data)=>{
-                        return data.properties.type === 'filter_type[ctr].id'
+                        return data.properties.type === filter_type[ctr].id
                     }));
                 }
 
-                console.log(geoData.features);
+                console.log(new_markers);
 
                 // for (let ctr = 0; ctr < geoData.features.length; ctr++){
                 //     let coords = geoData.features[ctr].geometry.coordinates;
