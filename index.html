@@ -41,24 +41,23 @@
             let xobj = new XMLHttpRequest();
             xobj.overrideMimeType("application/json");
             xobj.open('GET', 'static/js/data.json', true);
-            // Replace 'my_data' with the path to your file
             xobj.onreadystatechange = () => {
                 if (xobj.readyState === 4 && xobj.status === 200) {
                     // Required use of an anonymous callback
                     // as .open() will NOT return a value but simply returns undefined in asynchronous mode
-                    callback(xobj.responseText);
+                    return callback(xobj.responseText);
                 }
             };
             xobj.send(null);
         }
 
-        // Initialize and add the map
-        function initMap() {
-
-            loadJSON((response) => {
+        const geoData = loadJSON((response) => {
                 // Parse JSON string into object
                 const geoData = JSON.parse(response);
             });
+
+        // Initialize and add the map
+        function initMap() {
 
             // The location of Cebu
             const cebu = {lat: 10.488, lng: 123.880};
@@ -83,7 +82,6 @@
             }
         }
 
-        console.log(geoData,"here");
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdAb96ekVOdqHZv8O3rMIwxKf_WdRA65M&callback=initMap"></script>
 </html>
