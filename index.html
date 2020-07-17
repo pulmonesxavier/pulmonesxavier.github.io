@@ -140,7 +140,7 @@
                     new_marker = geoData.features.filter((data)=>{
                         return data.properties.type === filter_type[ctr].id
                     });
-                    for (let ctr = 0; ctr < new_markerlength; ctr++){
+                    for (let ctr = 0; ctr < new_marker.length; ctr++){
                         let coords = new_marker[ctr].geometry.coordinates;
                         let latLng = new google.maps.LatLng(coords[0],coords[1]);
                         addMarker(latLng);
