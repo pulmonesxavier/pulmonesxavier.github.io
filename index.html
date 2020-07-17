@@ -29,10 +29,15 @@
             <!--The div element for the map -->
             <div id="map"></div>
             <div id="pane">
-                <input type="checkbox" name="filter" id="casual-dining" onchange="filterMarkers()">
-                <label for='casual-dining'>Casual Dining</label>
-                <input type="checkbox" name="filter" id="fine-dining" onchange="filterMarkers()">
-                <label for='fine-dining'>Fine Dining</label>
+                <div>
+                    <input type="checkbox" name="filter" id="casual-dining" onchange="filterMarkers()">
+                    <label for='casual-dining'>Casual Dining</label>
+                    <input type="checkbox" name="filter" id="fine-dining" onchange="filterMarkers()">
+                    <label for='fine-dining'>Fine Dining</label>
+                </div>
+                <div>
+                    <span id="specialties"></span>
+                </div>
             </div>
         </div>
     </body>
@@ -74,6 +79,7 @@
                     // Parse JSON string into object
                     const geoData = JSON.parse(response);
                     let restaurant_data = geoData.features[marker.id]
+                    document.getElementById("specialties").innerHTML = restaurant_data.properties.specialty.join(", ");
                     console.log(restaurant_data);
                 });
             });
