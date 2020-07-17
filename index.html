@@ -131,7 +131,7 @@
                 const geoData = JSON.parse(response);
 
                 for (let ctr = 0; ctr < filter_type.length; ctr++){
-                    new_markers.push(geoData.features.filter((data)=>{
+                    new_markers = (geoData.features.filter((data)=>{
                         return data.properties.type === 'filter_type[ctr].id'
                     }));
                 }
