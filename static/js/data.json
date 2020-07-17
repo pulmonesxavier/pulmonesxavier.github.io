@@ -1,13 +1,18 @@
 
 {
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": [10.312892, 123.904507]
-    },
-    "properties": {
-        "name": "The Pig and Palm",
-        "type": "Casual Dining",
-        "specialty": ["Cocktails", "Pork Belly"]
-    }
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [10.312892, 123.904507]
+            },
+            "properties": {
+                "name": "The Pig and Palm",
+                "type": "Casual Dining",
+                "specialty": ["Cocktails", "Pork Belly"]
+            }
+        }
+    ]
 }
