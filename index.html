@@ -8,16 +8,33 @@
                 width: 100%;  /* The width is the width of the web page */
             }
 
-            body, html {
+            body, html, #content-container {
                 margin: 0px;
                 height: 100%;
                 width: 100%;
             }
+
+            #pane{
+                background-color: white;
+                height: 90%;
+                width: 400px;
+                position: absolute;
+                top: 5%;
+                z-index: 3;
+            }
         </style>
     </head>
     <body>
-        <!--The div element for the map -->
-        <div id="map"></div>
+        <div id="content-container">
+            <!--The div element for the map -->
+            <div id="map"></div>
+            <div id="pane">
+                <input type="checkbox" name="filter" id="casual-dining">
+                <label for='casual-dining'>Casual Dining</label>
+                <input type="checkbox" name="filter" id="fine-dining">
+                <label for='fine-dining'>Fine Dining</label>
+            </div>
+        </div>
     </body>
     <script>
         const loadJSON = (callback) => {
@@ -35,6 +52,11 @@
             xobj.send(null);
         }
 
+        const geoData = loadJSON((response) => {
+        // Parse JSON string into object
+            return JSON.parse(response);
+        });
+
         // Initialize and add the map
         function initMap() {
 
@@ -44,28 +66,21 @@
             const map = new google.maps.Map(
 
                 document.getElementById('map'), {
-                zoom: 12, center: cebu,
+                zoom: 10, center: cebu,
                 mapTypeControl: false,
                 streetViewControl: false,
                 fullscreenControl: false
 
             });
-            //   var marker = new google.maps.Marker({position: cebu, map: map});
 
-            loadJSON((response) => {
-            // Parse JSON string into object
-                const geoData = JSON.parse(response);
-                for (let ctr = 0; ctr < geoData.features.length; ctr++){
-                    let coords = geoData.features[ctr].geometry.coordinates;
-                    let latLng = new google.maps.LatLng(coords[0],coords[1]);
-                    let marker = new google.maps.Marker({
-                        position: latLng,
-                        map: map
-                    });
-                }
-
-
-            });
+            for (let ctr = 0; ctr < geoData.features.length; ctr++){
+                let coords = geoData.features[ctr].geometry.coordinates;
+                let latLng = new google.maps.LatLng(coords[0],coords[1]);
+                let marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map
+                });
+            }
         }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdAb96ekVOdqHZv8O3rMIwxKf_WdRA65M&callback=initMap"></script>

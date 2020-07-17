@@ -13,6 +13,18 @@
                 "type": "Casual Dining",
                 "specialty": ["Cocktails", "Pork Belly"]
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [10.328115, 123.909861]
+            },
+            "properties": {
+                "name": "Olio Restaurant",
+                "type": "Fine Dining",
+                "specialty": ["Seafood", "Steak"]
+            }
         }
     ]
 }
