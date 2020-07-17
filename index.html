@@ -68,8 +68,8 @@
             marker.addListener("click", function() {
                 map.setZoom(13);
                 // map.setCenter(marker.getPosition());
-                map.panTo(marker.getPosition());
-                console.log(marker.getPosition());
+                map.panTo(location);
+                console.log(location);
             });
 
             markers.push(marker);
