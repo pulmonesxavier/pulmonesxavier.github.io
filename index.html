@@ -140,9 +140,11 @@
                     new_marker = geoData.features.filter((data)=>{
                         return data.properties.type === filter_type[ctr].id
                     });
-                    let coords = new_marker.geometry.coordinates;
-                    let latLng = new google.maps.LatLng(coords[0],coords[1]);
-                    addMarker(latLng);
+                    for (let ctr = 0; ctr < new_markerlength; ctr++){
+                        let coords = new_marker[ctr].geometry.coordinates;
+                        let latLng = new google.maps.LatLng(coords[0],coords[1]);
+                        addMarker(latLng);
+                    }
                 }
 
                 // console.log(new_markers);
