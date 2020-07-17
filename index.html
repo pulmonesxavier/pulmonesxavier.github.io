@@ -53,7 +53,7 @@
 
         const geoData = loadJSON((response) => {
                 // Parse JSON string into object
-                const geoData = JSON.parse(response);
+                let jsonData = JSON.parse(response);
             });
 
         // Initialize and add the map
