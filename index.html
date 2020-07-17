@@ -45,12 +45,16 @@
                 if (xobj.readyState === 4 && xobj.status === 200) {
                     // Required use of an anonymous callback
                     // as .open() will NOT return a value but simply returns undefined in asynchronous mode
-                    let jsonData = callback(xobj.responseText);
-                    return jsonData;
+                    callback(xobj.responseText);
                 }
             };
             xobj.send(null);
         }
+
+        loadJSON((response) => {
+            // Parse JSON string into object
+            const geoData = JSON.parse(response);
+        });
 
         // Initialize and add the map
         function initMap() {
@@ -66,11 +70,6 @@
                 streetViewControl: false,
                 fullscreenControl: false
 
-            });
-
-            const geoData = loadJSON((response) => {
-                // Parse JSON string into object
-                return JSON.parse(response);
             });
 
             for (let ctr = 0; ctr < geoData.features.length; ctr++){
