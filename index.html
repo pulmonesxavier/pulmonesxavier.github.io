@@ -38,6 +38,13 @@
         // Initialize and add the map
         function initMap() {
 
+            // The location of Cebu
+            const cebu = {lat: 10.488, lng: 123.880};
+            // The map, centered at Cebu
+            const map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 10, center: cebu});
+            //   var marker = new google.maps.Marker({position: cebu, map: map});
+
             loadJSON((response) => {
             // Parse JSON string into object
                 const geoData = JSON.parse(response);
@@ -49,14 +56,9 @@
                     map: map
                     });
                 }
-            });
 
-            // The location of Cebu
-            const cebu = {lat: 10.488, lng: 123.880};
-            // The map, centered at Cebu
-            const map = new google.maps.Map(
-            document.getElementById('map'), {zoom: 10, center: cebu});
-            //   var marker = new google.maps.Marker({position: cebu, map: map});
+
+            });
         }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdAb96ekVOdqHZv8O3rMIwxKf_WdRA65M&callback=initMap"></script>
