@@ -51,6 +51,7 @@
                 for (let ctr = 0; ctr < geoData.length; ctr++){
                     let coords = geoData.geometry.coordinates;
                     let latLng = {lat: geoData.geometry.coordinates[0], lng: geoData.geometry.coordinates[0]};
+                    console.log(latLang);
                     let marker = new google.maps.Marker({
                     position: latLng,
                     map: map
