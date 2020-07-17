@@ -64,6 +64,11 @@
                 position: location,
                 map: map
             });
+
+            marker.addListener("click", function() {
+                    map.setZoom(8);
+                    map.setCenter(marker.getPosition());
+            });
             markers.push(marker);
         }
 
@@ -124,7 +129,6 @@
             // let new_markers = []
             let filter_type = document.querySelectorAll("input:checked")
 
-            deleteMarkers();
 
             loadJSON((response) => {
                 // Parse JSON string into object
@@ -135,7 +139,7 @@
                 //         return data.properties.type === filter_type[ctr].id
                 //     }));
                 // }
-
+                deleteMarkers();
                 for (let ctr = 0; ctr < filter_type.length; ctr++){
                     new_marker = geoData.features.filter((data)=>{
                         return data.properties.type === filter_type[ctr].id
@@ -146,6 +150,7 @@
                         addMarker(latLng);
                     }
                 }
+                showMarkers();
 
                 // console.log(new_markers);
 
@@ -159,8 +164,9 @@
                     // });
                 // }
             });
-            showMarkers()
         }
+
+
 
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdAb96ekVOdqHZv8O3rMIwxKf_WdRA65M&callback=initMap"></script>
