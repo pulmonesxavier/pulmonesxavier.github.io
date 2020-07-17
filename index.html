@@ -59,10 +59,11 @@
         }
 
         // Adds a marker to the map and push to the array.
-        function addMarker(location) {
+        function addMarker(location, name) {
             let marker = new google.maps.Marker({
                 position: location,
-                map: map
+                map: map,
+                title: name
             });
 
             marker.addListener("click", function() {
@@ -116,7 +117,7 @@
                 for (let ctr = 0; ctr < geoData.features.length; ctr++){
                     let coords = geoData.features[ctr].geometry.coordinates;
                     let latLng = new google.maps.LatLng(coords[0],coords[1]);
-                    addMarker(latLng);
+                    addMarker(latLng, geoData.features[ctr].properties.name);
                 }
             });
         }
@@ -136,7 +137,7 @@
                     for (let ctr = 0; ctr < new_marker.length; ctr++){
                         let coords = new_marker[ctr].geometry.coordinates;
                         let latLng = new google.maps.LatLng(coords[0],coords[1]);
-                        addMarker(latLng);
+                        addMarker(latLng, geoData.features[ctr].properties.name);
                     }
                 }
                 showMarkers();
