@@ -261,29 +261,29 @@
                     });
 
                 });
-
-                google.maps.event.addListener(map, 'mousemove', function (e) {
-                    if (mapBox !==null){
-                        if (!isBoxComplete){
-                            mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
-                        }
-                    }
-                });
-
-                google.maps.event.addListener(map, 'mouseup', function (e) {
-                    if (mapBox !==null){
-                        isBoxComplete = true;
-                        map.setOptions({ draggable: true} );
-
-                        countRestaurantsWithinBounds(mapBox.bounds);
-
-                        if(mapBox !== null){
-                            mapBox.setMap(null);
-                        }
-                        isBoxComplete = false;
-                    }
-                });
             }
+
+            google.maps.event.addListener(map, 'mousemove', function (e) {
+                if (mapBox !==null){
+                    if (!isBoxComplete){
+                        mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
+                    }
+                }
+            });
+
+            google.maps.event.addListener(map, 'mouseup', function (e) {
+                if (mapBox !==null){
+                    isBoxComplete = true;
+                    map.setOptions({ draggable: true} );
+
+                    countRestaurantsWithinBounds(mapBox.bounds);
+
+                    if(mapBox !== null){
+                        mapBox.setMap(null);
+                    }
+                    isBoxComplete = false;
+                }
+            });
         }
 
         function countRestaurantsWithinBounds(mapBounds) {
