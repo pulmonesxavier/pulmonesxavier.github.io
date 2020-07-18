@@ -196,6 +196,7 @@
             }
 
             google.maps.event.addListener(map, 'mousedown', function (e) {
+                isBoxComplete = false;
                 if(shiftisDown){
                     map.setOptions({ draggable: false });
 
@@ -203,8 +204,8 @@
                         mapBox.setMap(null);
                         mapBox = null;
                     }
-                    isBoxcomplete = false;
-                    console.log(isBoxComplete, "mouseUpisBoxComplete")
+
+                    console.log(isBoxComplete, "123mouseUpisBoxComplete")
 
                     mapBox = new google.maps.Rectangle({
                         map: map,
