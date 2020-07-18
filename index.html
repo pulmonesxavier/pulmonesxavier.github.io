@@ -276,15 +276,16 @@
         }
 
         function downShiftKeyMap(event) {
-            if (event.shiftKey) {
-                shiftisDown = true
+            if (event.keyCode == 16) {
+                shiftisDown = true;
                 console.log(event, "shift down")
             }
         }
 
         function upShiftKeyMap(event) {
-            if (!event.shiftKey) {
-                shiftisDown = false
+            if (event.keyCode == 16) {
+                shiftisDown = false;
+                console.log(event, "shift up")
             }
         }
 
