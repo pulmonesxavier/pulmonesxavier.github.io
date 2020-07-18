@@ -37,6 +37,8 @@
                 </div>
                 <div>
                     <span id="specialties"></span>
+                    <span>Daily Average Number of Customers:</span>
+                    <span id="ave-num-customers"></span>
                 </div>
             </div>
         </div>
@@ -89,6 +91,7 @@
 
                 let restaurant_data = geoData.features[marker.id]
                 document.getElementById("specialties").innerHTML = restaurant_data.properties.specialty.join(", ");
+                document.getElementById("ave-num-customers").innerHTML = restaurant_data.properties.ave_daily_customers;
                 if(currLocMarker){
                     calculateRoute(marker.position);
                 }else{
@@ -230,8 +233,6 @@
                     isBoxComplete = true;
                     map.setOptions({ draggable: true} );
                     countRestaurantsWithinBounds(mapBox.bounds);
-                    mapBox.setMap(null);
-                    mapBox = null;
                     console.log(mapBox, "mapcox")
                 }else{
                     console.log("mouseup not null")
