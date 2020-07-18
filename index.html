@@ -219,7 +219,7 @@
 
             google.maps.event.addListener(map, 'mousemove', function (e) {
                 if (mapBox !==null){
-                    if (isBoxComplete === false){
+                    if (isBoxComplete === true){
                         mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
                     }else{
                         console.log("mousemo    ve not null")
