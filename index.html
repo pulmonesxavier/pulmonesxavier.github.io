@@ -30,9 +30,9 @@
             <div id="map"></div>
             <div id="pane">
                 <div>
-                    <input type="checkbox" checked name="filter" id="casual-dining" onchange="filterMarkers()">
+                    <input type="checkbox" checked name="filter" id="casual-dining" onchange="filterMarkers(this)">
                     <label for='casual-dining'>Casual Dining</label>
-                    <input type="checkbox" checked name="filter" id="fine-dining" onchange="filterMarkers()">
+                    <input type="checkbox" checked name="filter" id="fine-dining" onchange="filterMarkers(this)">
                     <label for='fine-dining'>Fine Dining</label>
                 </div>
                 <div>
@@ -168,12 +168,13 @@
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
-            
         }
 
-        function filterMarkers(test){
+        function filterMarkers(state){
 
-            let filter_type = document.querySelectorAll("input:checked")
+            console.log(state.checked, "state");
+            console.log(state, "state value");
+            let filter_type = document.querySelectorAll("input:checked");
 
             deleteMarkers();
             for (let ctr1 = 0; ctr1 < filter_type.length; ctr1++){
