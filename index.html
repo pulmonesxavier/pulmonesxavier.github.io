@@ -3,12 +3,12 @@
     <head>
         <style>
             /* Set the size of the div element that contains the map */
-            #map {
+            #map{
                 height: 100%;  /* The height is 400 pixels */
                 width: 100%;  /* The width is the width of the web page */
             }
 
-            body, html, #content-container {
+            body, html, #content-container{
                 margin: 0px;
                 height: 100%;
                 width: 100%;
@@ -54,7 +54,7 @@
             xobj.overrideMimeType("application/json");
             xobj.open('GET', 'static/js/data.json', true);
             xobj.onreadystatechange = () => {
-                if (xobj.readyState === 4 && xobj.status === 200) {
+                if (xobj.readyState === 4 && xobj.status === 200){
                     // Required use of an anonymous callback
                     // as .open() will NOT return a value but simply returns undefined in asynchronous mode
                     callback(xobj.responseText);
@@ -81,7 +81,7 @@
                 id: id
             });
 
-            marker.addListener("click", function() {
+            marker.addListener("click", () => {
                 map.setZoom(14);
                 // map.setCenter(marker.getPosition());
                 map.panTo(location);
@@ -89,7 +89,6 @@
                 let restaurant_data = geoData.features[marker.id]
                 document.getElementById("specialties").innerHTML = restaurant_data.properties.specialty.join(", ");
                 if(currLocMarker){
-                    console.log("Here!")
                     calculateRoute(marker.position);
                 }else{
                     console.log("Not Here!")
@@ -149,7 +148,7 @@
             // Gets current location and adds a marker
             infoWindow = new google.maps.InfoWindow();
 
-            if (navigator.geolocation) {
+            if (navigator.geolocation){
                 navigator.geolocation.getCurrentPosition((position)=>{
                     let pos = {
                         lat: position.coords.latitude,
@@ -217,11 +216,13 @@
                 travelMode: google.maps.TravelMode.DRIVING
             };
 
-            directionsService.route(request, function(response, status) {
+            directionsDisplay.setMap(null);
+
+            directionsService.route(request, (response, status) => {
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
                     directionsDisplay.setMap(map);
-                } else {
+                }else{
                     alert("Direction Request failed!");
                 }
             });
