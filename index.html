@@ -214,7 +214,6 @@
                         strokeWeight: 0.4,
                         clickable: false
                     });
-                    console.log(mapBox, "another mapbox")
                 }
             });
 
@@ -222,9 +221,10 @@
                 if (mapBox !==null){
                     if (!isBoxComplete){
                         mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
+                    }else{
+                        console.log("mousemo    ve not null")
                     }
                 }else{
-                    console.log("mousemove not null")
                 }
             });
 
