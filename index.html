@@ -85,14 +85,13 @@
             marker.addListener("click", () => {
                 map.setZoom(14);
                 // map.setCenter(marker.getPosition());
-                map.panTo(location);
 
                 let restaurant_data = geoData.features[marker.id]
                 document.getElementById("specialties").innerHTML = restaurant_data.properties.specialty.join(", ");
                 if(currLocMarker){
                     calculateRoute(marker.position);
                 }else{
-                    console.log("Not Here!")
+                    map.panTo(location);
                 }
 
             });
