@@ -75,11 +75,6 @@
             infoWindow.open(map);
         }
 
-        function clearMapInstance(){
-            map.setOptions({ draggable: true} );
-            google.maps.event.clearInstanceListeners(map);
-        }
-
         // Adds a marker to the map and push to the array.
         function addMarker(location, id) {
             let marker = new google.maps.Marker({
@@ -220,6 +215,7 @@
             });
 
             google.maps.event.addListener(map, 'mousemove', function (e) {
+                console.log(mapBox)
                 if (mapBox !==null){
                     if (!isBoxComplete){
                         mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
