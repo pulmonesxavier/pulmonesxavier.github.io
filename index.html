@@ -216,20 +216,23 @@
 
             google.maps.event.addListener(map, 'mousemove', function (e) {
                 if (mapBox !==null){
-                    console.log("mousemove")
                     if (!isBoxComplete){
                         mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
                     }
+                }else{
+                    console.log("mousemove not null")
                 }
             });
 
             google.maps.event.addListener(map, 'mouseup', function (e) {
                 if (mapBox !==null){
-                    console.log("mouseup")
                     isBoxComplete = true;
                     map.setOptions({ draggable: true} );
                     countRestaurantsWithinBounds(mapBox.bounds);
                     mapBox.setMap(null);
+                    console.log(mapBox, "mapcox")
+                }else{
+                    console.log("mouseup not null")
                 }
             });
         }
