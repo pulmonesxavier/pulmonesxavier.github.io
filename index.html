@@ -80,7 +80,6 @@
             google.maps.event.clearInstanceListeners(map);
             if (mapBox != null){
                 map.setOptions({ draggable: true} );
-                countRestaurantsWithinBounds(mapBox.bounds);
                 mapBox.setMap(null);
             }
         }
@@ -279,6 +278,9 @@
                 google.maps.event.addListener(map, 'mouseup', function (e) {
                     if (mapBox !==null){
                         isBoxComplete = true;
+                        map.setOptions({ draggable: true} );
+                        countRestaurantsWithinBounds(mapBox.position);
+                        mapBox.setMap(null);
                     }
                 });
             }
