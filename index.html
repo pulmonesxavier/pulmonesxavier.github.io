@@ -216,7 +216,10 @@
                 travelMode: google.maps.TravelMode.DRIVING
             };
 
-            directionsDisplay.setMap(null);
+            if (directionsDisplay != null) {
+                directionsDisplay.setMap(null);
+                directionsDisplay = null;
+            }
 
             directionsService.route(request, (response, status) => {
                 if (status == google.maps.DirectionsStatus.OK) {
