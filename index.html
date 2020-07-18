@@ -228,6 +228,7 @@
                     isBoxComplete = true;
                     map.setOptions({ draggable: true} );
                     countRestaurantsWithinBounds(mapBox.bounds);
+                    mapBox.setMap(null);
                 }
             });
         }
