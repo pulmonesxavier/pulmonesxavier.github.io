@@ -215,8 +215,8 @@
             });
 
             google.maps.event.addListener(map, 'mousemove', function (e) {
-                console.log(mapBox)
                 if (mapBox !==null){
+                    console.log("mousemove")
                     if (!isBoxComplete){
                         mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
                     }
@@ -225,6 +225,7 @@
 
             google.maps.event.addListener(map, 'mouseup', function (e) {
                 if (mapBox !==null){
+                    console.log("mouseup")
                     isBoxComplete = true;
                     map.setOptions({ draggable: true} );
                     countRestaurantsWithinBounds(mapBox.bounds);
