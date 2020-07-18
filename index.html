@@ -27,7 +27,7 @@
     <body>
         <div id="content-container">
             <!--The div element for the map -->
-            <div id="map" onkeydown="isKeyPressed(event)"></div>
+            <div id="map" onkeydown="drawMapRectangle(event)"></div>
             <div id="pane">
                 <div>
                     <input type="checkbox" checked name="filter" id="casual-dining" onchange="filterMarkers(this)">
@@ -230,18 +230,41 @@
             });
         }
 
-        function isKeyPressed(event) {
-  if (event.shiftKey) {
-    console.log("The SHIFT key was pressed!");
-  } else {
-    console.log("The SHIFT key was NOT pressed!");
-  }
-}
+        function drawMapRectangle(event) {
+            let isBoxComplete = false;
+            let mapBox = null;
 
-        function drawMapRectangle() {
+            if (event.shiftKey) {
+                google.maps.event.addListener(map, 'mousedown', function (e) {
 
+                    map.setOptions({ draggable: false });
+                    // cleargribBoundingBox();
+                    mapBox = new google.maps.Rectangle({
+                        map: map,
+                        bounds: new google.maps.LatLngBounds(e.latLng,e.latLng),
+                        fillOpacity: 0.15,
+                        strokeWeight: 0.9,
+                        clickable: false
+                    });
+
+                });
+
+                google.maps.event.addListener(themap, 'mousemove', function (e) {
+                    if (mapBox !==null){
+                        if (!isBoxComplete){
+                            mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
+                        }
+                    }
+                });
+
+                google.maps.event.addListener(themap, 'mouseup', function (e) {
+                    if (mapBox !==null){
+                        isBoxComplete = true;
+                        map.setOptions({ draggable: true} );
+                    }
+                });
+            }
         }
-
         function countRestaurantsWithinBounds() {
 
         }
