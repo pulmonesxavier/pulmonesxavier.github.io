@@ -30,9 +30,9 @@
             <div id="map"></div>
             <div id="pane">
                 <div>
-                    <input type="checkbox" name="filter" id="casual-dining" onchange="filterMarkers()">
+                    <input type="checkbox" checked name="filter" id="casual-dining" onchange="filterMarkers()">
                     <label for='casual-dining'>Casual Dining</label>
-                    <input type="checkbox" name="filter" id="fine-dining" onchange="filterMarkers()">
+                    <input type="checkbox" checked name="filter" id="fine-dining" onchange="filterMarkers()">
                     <label for='fine-dining'>Fine Dining</label>
                 </div>
                 <div>
@@ -147,9 +147,8 @@
             infoWindow = new google.maps.InfoWindow();
 
             if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      function(position) {
-        var pos = {
+    navigator.geolocation.getCurrentPosition((position)=>{
+        let pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
@@ -158,8 +157,9 @@
         infoWindow.setContent("Location found.");
         infoWindow.open(map);
         map.setCenter(pos);
-      },
-      function() {
+    }
+      ,
+      () => {
         handleLocationError(true, infoWindow, map.getCenter());
       }
     );
@@ -174,7 +174,6 @@
         function filterMarkers(test){
 
             let filter_type = document.querySelectorAll("input:checked")
-            console.log(geoData, "test")
 
             deleteMarkers();
             for (let ctr1 = 0; ctr1 < filter_type.length; ctr1++){
