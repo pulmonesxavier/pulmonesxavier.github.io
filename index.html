@@ -273,8 +273,11 @@
                         countRestaurantsWithinBounds(mapBox.bounds);
                     }
                 });
+            }else{
+                listener.remove();
             }
         }
+
         function countRestaurantsWithinBounds(mapBounds) {
 
             let countRestaurant = 0;
