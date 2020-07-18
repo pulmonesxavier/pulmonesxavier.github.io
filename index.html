@@ -27,7 +27,7 @@
     <body>
         <div id="content-container">
             <!--The div element for the map -->
-            <div id="map" onkeydown="drawMapRectangle(event)"></div>
+            <div id="map" onkeydown="downShiftKeyMap(event)" onkeyup="upShiftKeyMap(event)"></div>
             <div id="pane">
                 <div>
                     <input type="checkbox" checked name="filter" id="casual-dining" onchange="filterMarkers(this)">
@@ -48,6 +48,7 @@
         let map, infoWindow, geoData, currLocMarker;
         let directionsDisplay;
         let directionsService;
+        let shiftisDown = false;
         let markers = [];
 
         const loadJSON = (callback) => {
@@ -133,6 +134,9 @@
             directionsDisplay = new google.maps.DirectionsRenderer();
             directionsService = new google.maps.DirectionsService();
 
+            let isBoxComplete = false;
+            let mapBox = null;
+
             // The map, centered at Cebu
             map = new google.maps.Map(
                 document.getElementById('map'), {
@@ -193,7 +197,46 @@
                 handleLocationError(false, infoWindow, map.getCenter());
             }
 
+            if(shiftisDown){
+                google.maps.event.addListener(map, 'mousedown', function (e) {
 
+                    map.setOptions({ draggable: false });
+
+                    if(mapBox !== null){
+                        mapBox.setMap(null);
+                    }
+
+                    isBoxcomplete = false;
+
+                    mapBox = new google.maps.Rectangle({
+                        map: map,
+                        bounds: new google.maps.LatLngBounds(e.latLng,e.latLng),
+                        fillColor: "#B81422",
+                        fillOpacity: 0.15,
+                        strokeColor: "#B81422",
+                        strokeWeight: 0.4,
+                        clickable: false
+                    });
+                });
+
+            }
+
+            google.maps.event.addListener(map, 'mousemove', function (e) {
+                if (mapBox !==null){
+                    if (!isBoxComplete){
+                        mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
+                    }
+                }
+            });
+
+            google.maps.event.addListener(map, 'mouseup', function (e) {
+                if (mapBox !==null){
+                    isBoxComplete = true;
+                    map.setOptions({ draggable: true} );
+                    countRestaurantsWithinBounds(mapBox.bounds);
+                    mapBox.setMap(null);
+                }
+            });
         }
 
         //Filter markers
@@ -213,7 +256,7 @@
             }
         }
 
-        //Caluclates and draws route to restaurant from location
+        //Calculates and draws route to restaurant from location
         function calculateRoute(end) {
 
             const request = {
@@ -235,50 +278,16 @@
             });
         }
 
-        function drawMapRectangle(event) {
-            let isBoxComplete = false;
-            let mapBox = null;
+        function downShiftKeyMap(event) {
 
             if (event.shiftKey) {
-                google.maps.event.addListener(map, 'mousedown', function (e) {
-
-                    map.setOptions({ draggable: false });
-
-                    if(mapBox !== null){
-                        mapBox.setMap(null);
-                    }
-
-                    isBoxcomplete = false;
-
-                    mapBox = new google.maps.Rectangle({
-                        map: map,
-                        bounds: new google.maps.LatLngBounds(e.latLng,e.latLng),
-                        fillColor: "#B81422",
-                        fillOpacity: 0.15,
-                        strokeColor: "#B81422",
-                        strokeWeight: 0.4,
-                        clickable: false
-                    });
-
-                });
-
-                google.maps.event.addListener(map, 'mousemove', function (e) {
-                    if (mapBox !==null){
-                        if (!isBoxComplete){
-                            mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
-                        }
-                    }
-                });
-
-                google.maps.event.addListener(map, 'mouseup', function (e) {
-                    if (mapBox !==null){
-                        isBoxComplete = true;
-                        map.setOptions({ draggable: true} );
-                        countRestaurantsWithinBounds(mapBox.bounds);
-                        mapBox.setMap(null);
-                    }
-                });
+                shiftisDown = true
             }
+        }
+
+        function downShiftKeyMap(event) {
+
+                shiftisDown = false
         }
 
         function countRestaurantsWithinBounds(mapBounds) {
