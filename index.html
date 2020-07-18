@@ -90,7 +90,6 @@
 
                 let restaurant_data = geoData.features[marker.id]
                 document.getElementById("specialties").innerHTML = restaurant_data.properties.specialty.join(", ");
-                console.log(restaurant_data);
 
             });
 
@@ -153,10 +152,17 @@
           lng: position.coords.longitude
         };
 
-        infoWindow.setPosition(pos);
-        infoWindow.setContent("Location found.");
-        infoWindow.open(map);
-        map.setCenter(pos);
+        let currLocMarker = new google.maps.Marker({
+            position: pos,
+            map: map,
+        });
+
+        currLocMarker.setMap(map)
+
+        // infoWindow.setPosition(pos);
+        // infoWindow.setContent("Location found.");
+        // infoWindow.open(map);
+        // map.setCenter(pos);
     }
       ,
       () => {
@@ -172,12 +178,9 @@
 
         function filterMarkers(state){
 
-            console.log(state.checked, "state");
             filtered_markers = geoData.features.filter((data)=>{
                 return data.properties.type === state.id
             });
-
-            console.log(filtered_markers, "fm")
 
             for (let ctr = 0; ctr < filtered_markers.length; ctr++){
 
@@ -187,43 +190,7 @@
                     markers[filtered_markers[ctr].properties.id].setVisible(false);
                 }
             }
-
-            // if (state.checked){
-            //     for (let ctr2 = 0; ctr2 < filtered_markers.length; ctr2++){
-            //         // let coords = new_marker[ctr2].geometry.coordinates;
-            //         // let latLng = new google.maps.LatLng(coords[0],coords[1]);
-            //         // addMarker(latLng, new_marker[ctr2].properties.id);
-
-            //         markers[filtered_markers.properties.id].setVisible(true);
-            //     }
-            // }else{
-
-            //     for (let ctr2 = 0; ctr2 < filtered_markers.length; ctr2++){
-            //         // let coords = new_marker[ctr2].geometry.coordinates;
-            //         // let latLng = new google.maps.LatLng(coords[0],coords[1]);
-            //         // addMarker(latLng, new_marker[ctr2].properties.id);
-
-            //         markers[filtered_markers.properties.id].setVisible(false);
-            //     }
-            // }
-            // console.log(state, "state value");
-            // let filter_type = document.querySelectorAll("input:checked");
-
-            // deleteMarkers();
-            // for (let ctr1 = 0; ctr1 < filter_type.length; ctr1++){
-            //     let new_marker = geoData.features.filter((data)=>{
-            //         return data.properties.type === filter_type[ctr1].id
-            //     });
-            //     for (let ctr2 = 0; ctr2 < new_marker.length; ctr2++){
-            //         let coords = new_marker[ctr2].geometry.coordinates;
-            //         let latLng = new google.maps.LatLng(coords[0],coords[1]);
-            //         addMarker(latLng, new_marker[ctr2].properties.id);
-            //     }
-            // }
-            // showMarkers();
         }
-
-
 
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdAb96ekVOdqHZv8O3rMIwxKf_WdRA65M&callback=initMap"></script>
