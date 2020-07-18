@@ -12,7 +12,8 @@
                 "id": 0,
                 "name": "The Pig and Palm",
                 "type": "casual-dining",
-                "specialty": ["Cocktails", "Pork Belly"]
+                "specialty": ["Cocktails", "Pork Belly"],
+                "ave_daily_customers": 136
             }
         },
         {
@@ -25,7 +26,8 @@
                 "id": 1,
                 "name": "Olio Restaurant",
                 "type": "fine-dining",
-                "specialty": ["Seafood", "Steak"]
+                "specialty": ["Seafood", "Steak"],
+                "ave_daily_customers": 60
             }
         }
     ]

@@ -276,7 +276,13 @@
                         map.setOptions({ draggable: true} );
 
                         countRestaurantsWithinBounds(mapBox.bounds);
-                    }
+
+                        if(mapBox !== null){
+                            mapBox.setMap(null);
+                        }
+
+                            boxcomplete = false;
+                        }
                 });
             }
         }
