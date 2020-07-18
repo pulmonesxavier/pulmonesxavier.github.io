@@ -46,8 +46,8 @@
         // The location of Cebu
         const cebu = {lat: 10.488, lng: 123.880};
         let map, infoWindow, geoData, currLocMarker;
-        let directionsDisplay = new google.maps.DirectionsRenderer();
-        let directionsService = new google.maps.DirectionsService();
+        let directionsDisplay;
+        let directionsService;
         let markers = [];
 
         const loadJSON = (callback) => {
@@ -125,6 +125,9 @@
 
         // Initialize and add the map
         function initMap() {
+
+            directionsDisplay = new google.maps.DirectionsRenderer();
+            directionsService = new google.maps.DirectionsService();
 
             // The map, centered at Cebu
             map = new google.maps.Map(
