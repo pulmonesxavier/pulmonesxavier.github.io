@@ -27,7 +27,7 @@
     <body>
         <div id="content-container">
             <!--The div element for the map -->
-            <div id="map" onkeydown="drawMapRectangle(event)"></div>
+            <div id="map" onkeydown="drawMapRectangle(event)" onkeyup="clearMapInstance()"></div>
             <div id="pane">
                 <div>
                     <input type="checkbox" checked name="filter" id="casual-dining" onchange="filterMarkers(this)">
