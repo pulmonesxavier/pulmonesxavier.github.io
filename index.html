@@ -197,7 +197,6 @@
 
             google.maps.event.addListener(map, 'mousedown', function (e) {
                 if(shiftisDown){
-                    console.log("Down")
                     map.setOptions({ draggable: false });
 
                     if(mapBox !== null){
@@ -215,6 +214,7 @@
                         strokeWeight: 0.4,
                         clickable: false
                     });
+                    console.log(mapBox, "another mapbox")
                 }
             });
 
