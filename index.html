@@ -276,15 +276,15 @@
         }
 
         function downShiftKeyMap(event) {
-
             if (event.shiftKey) {
                 shiftisDown = true
             }
         }
 
         function upShiftKeyMap(event) {
-
+            if (!event.shiftKey) {
                 shiftisDown = false
+            }
         }
 
         function countRestaurantsWithinBounds(mapBounds) {
