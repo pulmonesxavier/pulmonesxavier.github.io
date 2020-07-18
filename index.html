@@ -199,6 +199,7 @@
 
                     if(mapBox !== null){
                         mapBox.setMap(null);
+                        mapBox = null;
                     }
                     isBoxcomplete = false;
 
@@ -230,6 +231,7 @@
                     map.setOptions({ draggable: true} );
                     countRestaurantsWithinBounds(mapBox.bounds);
                     mapBox.setMap(null);
+                    mapBox = null;
                     console.log(mapBox, "mapcox")
                 }else{
                     console.log("mouseup not null")
