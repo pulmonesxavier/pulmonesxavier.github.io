@@ -39,6 +39,7 @@
                     <span id="specialties"></span>
                     <span>Daily Average Number of Customers:</span>
                     <span id="ave-num-customers"></span>
+                    <span id="num-restaurants"></span>
                 </div>
             </div>
         </div>
@@ -305,7 +306,7 @@
                 }
             }
 
-            alert("You have selected: ", countRestaurant, " resturants.");
+            document.getElementById("num-restaurants").innerHTML = "You have selected "+countRestaurant+ " restuarants.";
         }
 
     </script>
