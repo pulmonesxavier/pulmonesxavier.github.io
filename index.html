@@ -48,7 +48,6 @@
         let map, infoWindow, geoData, currLocMarker;
         let directionsDisplay;
         let directionsService;
-        let mapBox;
         let markers = [];
 
         const loadJSON = (callback) => {
@@ -78,10 +77,6 @@
         function clearMapInstance(){
             map.setOptions({ draggable: true} );
             google.maps.event.clearInstanceListeners(map);
-            if (mapBox != null){
-                map.setOptions({ draggable: true} );
-                mapBox.setMap(null);
-            }
         }
 
         // Adds a marker to the map and push to the array.
@@ -279,7 +274,7 @@
                     if (mapBox !==null){
                         isBoxComplete = true;
                         map.setOptions({ draggable: true} );
-                        countRestaurantsWithinBounds(mapBox.position);
+                        countRestaurantsWithinBounds(mapBox.bounds);
                         mapBox.setMap(null);
                     }
                 });
