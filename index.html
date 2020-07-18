@@ -221,6 +221,9 @@
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);
                     directionsDisplay.setMap(map);
+                    directionsDisplay.setOptions({
+                        suppressMarkers: true;
+                    });
                 }else{
                     alert("Direction Request failed!");
                 }
