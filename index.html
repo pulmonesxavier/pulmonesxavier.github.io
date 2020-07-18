@@ -238,12 +238,20 @@
                 google.maps.event.addListener(map, 'mousedown', function (e) {
 
                     map.setOptions({ draggable: false });
-                    // cleargribBoundingBox();
+
+                    if(mapBox !== null){
+                        mapBox.setMap(null);
+                    }
+
+                    boxcomplete = false;
+
                     mapBox = new google.maps.Rectangle({
                         map: map,
                         bounds: new google.maps.LatLngBounds(e.latLng,e.latLng),
+                        fillColor: "#B81422",
                         fillOpacity: 0.15,
-                        strokeWeight: 0.9,
+                        strokeColor: "#B81422",
+                        strokeWeight: 0.4,
                         clickable: false
                     });
 
@@ -261,12 +269,23 @@
                     if (mapBox !==null){
                         isBoxComplete = true;
                         map.setOptions({ draggable: true} );
+
+                        countRestaurantsWithinBounds(mapBox.bounds);
                     }
                 });
             }
         }
-        function countRestaurantsWithinBounds() {
+        function countRestaurantsWithinBounds(mapBounds) {
 
+            let countRestaurant = 0;
+
+            for (ctr = 0; ctr < markers.length; ctr++){
+                if(mapBounds.contains(markers[ctr].position)){
+                    countRestaurant++;
+                }
+            }
+
+            console.log("countRestaurant", countRestaurant);
         }
 
     </script>
