@@ -90,6 +90,7 @@
                 document.getElementById("specialties").innerHTML = restaurant_data.properties.specialty.join(", ");
                 if(currLocMarker){
                     console.log("Here!")
+                    calculateRoute(marker.position);
                 }else{
                     console.log("Not Here!")
                 }
@@ -145,17 +146,16 @@
                 }
 
             });
-
+            // Gets current location and adds a marker
             infoWindow = new google.maps.InfoWindow();
 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition((position)=>{
                     let pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
                     };
-
-                        currLocMarker = new google.maps.Marker({
+                    currLocMarker = new google.maps.Marker({
                         position: pos,
                         map: map,
                         icon: {
@@ -190,6 +190,7 @@
 
         }
 
+        //Filter markers
         function filterMarkers(state){
 
             filtered_markers = geoData.features.filter((data)=>{
@@ -204,6 +205,26 @@
                     markers[filtered_markers[ctr].properties.id].setVisible(false);
                 }
             }
+        }
+
+        function calculateRoute(end){
+            let directionsDisplay = new google.maps.DirectionsRenderer();
+            var directionsService = new google.maps.DirectionsService();
+
+            const request = {
+                origin: currLocMarker.position,
+                destination: end,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+
+            directionsService.route(request, function(response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    directionsDisplay.setMap(map);
+                } else {
+                    alert("Direction Request failed!");
+                }
+            });
         }
 
     </script>
