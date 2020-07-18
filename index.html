@@ -231,6 +231,7 @@
             google.maps.event.addListener(map, 'mouseup', function (e) {
                 if (mapBox !==null){
                     isBoxComplete = true;
+                    console.log(isBoxComplete, "mouseUpisBoxComplete")
                     map.setOptions({ draggable: true} );
                     countRestaurantsWithinBounds(mapBox.bounds);
                     console.log(mapBox, "mapcox")
