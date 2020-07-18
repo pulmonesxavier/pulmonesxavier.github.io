@@ -205,7 +205,6 @@
                     if(mapBox !== null){
                         mapBox.setMap(null);
                     }
-
                     isBoxcomplete = false;
 
                     mapBox = new google.maps.Rectangle({
@@ -233,7 +232,6 @@
                     isBoxComplete = true;
                     map.setOptions({ draggable: true} );
                     countRestaurantsWithinBounds(mapBox.bounds);
-                    mapBox.setMap(null);
                 }
             });
         }
