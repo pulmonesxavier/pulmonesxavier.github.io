@@ -48,6 +48,7 @@
         let map, infoWindow, geoData, currLocMarker;
         let directionsDisplay;
         let directionsService;
+        let mapBox;
         let markers = [];
 
         const loadJSON = (callback) => {
@@ -77,6 +78,11 @@
         function clearMapInstance(){
             map.setOptions({ draggable: true} );
             google.maps.event.clearInstanceListeners(map);
+            if (mapBox != null){
+                map.setOptions({ draggable: true} );
+                countRestaurantsWithinBounds(mapBox.bounds);
+                mapBox.setMap(null);
+            }
         }
 
         // Adds a marker to the map and push to the array.
@@ -261,29 +267,21 @@
                     });
 
                 });
+
+                google.maps.event.addListener(map, 'mousemove', function (e) {
+                    if (mapBox !==null){
+                        if (!isBoxComplete){
+                            mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
+                        }
+                    }
+                });
+
+                google.maps.event.addListener(map, 'mouseup', function (e) {
+                    if (mapBox !==null){
+                        isBoxComplete = true;
+                    }
+                });
             }
-
-            google.maps.event.addListener(map, 'mousemove', function (e) {
-                if (mapBox !==null){
-                    if (!isBoxComplete){
-                        mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
-                    }
-                }
-            });
-
-            google.maps.event.addListener(map, 'mouseup', function (e) {
-                if (mapBox !==null){
-                    isBoxComplete = true;
-                    map.setOptions({ draggable: true} );
-
-                    countRestaurantsWithinBounds(mapBox.bounds);
-
-                    if(mapBox !== null){
-                        mapBox.setMap(null);
-                    }
-                    isBoxComplete = false;
-                }
-            });
         }
 
         function countRestaurantsWithinBounds(mapBounds) {
