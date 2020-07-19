@@ -40,6 +40,10 @@
                 box-shadow: 0px 10px 20px rgba(168, 174, 182, .18);
             }
 
+            #opening-hrs{
+                font-weight: 300;
+            }
+
             span{
                 display:block;
             }
@@ -51,7 +55,7 @@
             <div id="map" onkeydown="downShiftKeyMap(event)" onkeyup="upShiftKeyMap(event)"></div>
             <div id="pane">
                 <div>
-                    <h2>Filter Restaurants:</h2>
+                    <h4 style="margin-bottom:4px">Filter Restaurants:</h4>
                     <input type="checkbox" checked name="filter" id="casual-dining" onchange="filterMarkers(this)">
                     <label for='casual-dining'>Casual Dining</label>
                     <input type="checkbox" checked name="filter" id="fine-dining" onchange="filterMarkers(this)">
@@ -60,9 +64,15 @@
                     <label for='fine-dining'>Buffet</label>
                 </div>
                 <div style="margin-top: 30px;">
-                    <span id="specialties"></span>
-                    <span id="ave-num-customers"></span>
-                    <span id="num-restaurants"></span>
+                    <div style="margin-bottom: 30px">
+                        <h1 id="rest-name"></h1>
+                        <h3 id="opening-hrs"></h3>
+                    </div>
+                    <div>
+                        <span id="specialties"></span>
+                        <span id="ave-num-customers"></span>
+                        <span id="num-restaurants"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -114,6 +124,8 @@
                 // map.setCenter(marker.getPosition());
 
                 let restaurant_data = geoData.features[marker.id]
+                document.getElementById("rest-name").innerHTML = restaurant_data.properties.name;
+                document.getElementById("opening-hrs").innerHTML = "Operating hours: " +restaurant_data.properties.opening-hrs;
                 document.getElementById("specialties").innerHTML = "Specialties: " + restaurant_data.properties.specialty.join(", ");
                 document.getElementById("ave-num-customers").innerHTML = "Daily average number of customers: " +restaurant_data.properties.ave_daily_customers;
                 if(currLocMarker){

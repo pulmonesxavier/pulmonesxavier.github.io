@@ -13,7 +13,8 @@
                 "name": "The Pig and Palm",
                 "type": "casual-dining",
                 "specialty": ["Cocktails", "Pork Belly"],
-                "ave_daily_customers": 136
+                "ave_daily_customers": 136,
+                "opening-hrs": "11am - 10pm"
             }
         },
         {
@@ -27,7 +28,8 @@
                 "name": "Olio Restaurant",
                 "type": "fine-dining",
                 "specialty": ["Seafood", "Steak"],
-                "ave_daily_customers": 60
+                "ave_daily_customers": 60,
+                "opening-hrs": "11am - 10pm"
             }
         },
         {
@@ -41,7 +43,8 @@
                 "name": "Ramen Yushoken",
                 "type": "casual-dining",
                 "specialty": ["Ramen"],
-                "ave_daily_customers": 124
+                "ave_daily_customers": 124,
+                "opening-hrs": "11am - 10pm"
             }
         },
         {
@@ -55,7 +58,8 @@
                 "name": "Acacia Steakhouse",
                 "type": "casual-dining",
                 "specialty": ["Steak"],
-                "ave_daily_customers": 73
+                "ave_daily_customers": 73,
+                "opening-hrs": "10am - 11pm"
             }
         },
         {
@@ -69,7 +73,8 @@
                 "name": "Anzani",
                 "type": "fine-dining",
                 "specialty": ["Cocktails", "Mediterranean Cuisine"],
-                "ave_daily_customers": 45
+                "ave_daily_customers": 45,
+                "opening-hrs": "11am - 10pm"
             }
         },
         {
@@ -83,7 +88,8 @@
                 "name": "Feria",
                 "type": "buffet",
                 "specialty": ["International Cuisine"],
-                "ave_daily_customers": 300
+                "ave_daily_customers": 300,
+                "opening-hrs": "8am - 10pm"
             }
         }
     ]
