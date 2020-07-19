@@ -286,6 +286,7 @@
         //Filter markers
         function filterMarkers(state){
 
+            directionsDisplay.setMap(null);
             filtered_markers = geoData.features.filter((data)=>{
                 return data.properties.type === state.id
             });
