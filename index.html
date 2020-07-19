@@ -115,7 +115,7 @@
 
                 let restaurant_data = geoData.features[marker.id]
                 document.getElementById("specialties").innerHTML = "Specialties: " + restaurant_data.properties.specialty.join(", ");
-                document.getElementById("ave-num-customers").innerHTML = "Daily average number of customers " +restaurant_data.properties.ave_daily_customers;
+                document.getElementById("ave-num-customers").innerHTML = "Daily average number of customers: " +restaurant_data.properties.ave_daily_customers;
                 if(currLocMarker){
                     calculateRoute(marker.position);
                 }else{
@@ -247,6 +247,7 @@
                     if (isBoxComplete !== true){
                         mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
                     }
+                }
             });
 
             google.maps.event.addListener(map, 'mouseup', function (e) {
