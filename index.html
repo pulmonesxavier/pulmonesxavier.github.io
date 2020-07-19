@@ -91,7 +91,7 @@
                 // map.setCenter(marker.getPosition());
 
                 let restaurant_data = geoData.features[marker.id]
-                document.getElementById("specialties").innerHTML = restaurant_data.properties.specialty.join(", ");
+                document.getElementById("specialties").innerHTML = "Specialties: " + restaurant_data.properties.specialty.join(", ");
                 document.getElementById("ave-num-customers").innerHTML = restaurant_data.properties.ave_daily_customers;
                 if(currLocMarker){
                     calculateRoute(marker.position);
@@ -139,7 +139,8 @@
             // The map, centered at Cebu
             map = new google.maps.Map(
                 document.getElementById('map'), {
-                zoom: 12, center: cebu,
+                zoom: 10,
+                center: cebu,
                 mapTypeControl: false,
                 streetViewControl: false,
                 fullscreenControl: false,
@@ -306,7 +307,7 @@
                 }
             }
 
-            document.getElementById("num-restaurants").innerHTML = "You have selected "+countRestaurant+ " restuarants.";
+            document.getElementById("num-restaurants").innerHTML = "You have selected "+countRestaurant+ " restaurants.";
         }
 
     </script>

@@ -29,6 +29,48 @@
                 "specialty": ["Seafood", "Steak"],
                 "ave_daily_customers": 60
             }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [10.342572, 123.918031]
+            },
+            "properties": {
+                "id": 2,
+                "name": "Ramen Yushoken",
+                "type": "casual-dining",
+                "specialty": ["Ramen"],
+                "ave_daily_customers": 200
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [10.343406, 123.891780]
+            },
+            "properties": {
+                "id": 3,
+                "name": "Acacia Steakhouse",
+                "type": "casual-dining",
+                "specialty": ["Steak"],
+                "ave_daily_customers": 73
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [10.335593, 123.896803]
+            },
+            "properties": {
+                "id": 1,
+                "name": "Anzani",
+                "type": "fine-dining",
+                "specialty": ["Cocktails", "Mediterranean"],
+                "ave_daily_customers": 60
+            }
         }
     ]
 }
