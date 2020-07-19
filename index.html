@@ -18,7 +18,7 @@
 
             #pane{
                 background-color: white;
-                height: 30%;
+                height: auto;
                 width: 400px;
                 position: absolute;
                 top: 5%;
@@ -42,6 +42,14 @@
 
             #opening-hrs{
                 font-weight: 300;
+                margin-top: 0px;
+                color: #999999;
+            }
+
+            #rest-name{
+                font-weight: 300;
+                margin: 0px auto;
+                color: #999999;
             }
 
             .desc{
@@ -59,7 +67,7 @@
             <div id="map" onkeydown="downShiftKeyMap(event)" onkeyup="upShiftKeyMap(event)"></div>
             <div id="pane">
                 <div>
-                    <h4 style="margin-bottom:4px">Filter Restaurants:</h4>
+                    <h4 style="margin-bottom:4px; color: #999999;">Filter Restaurants:</h4>
                     <input type="checkbox" checked name="filter" id="casual-dining" onchange="filterMarkers(this)">
                     <label for='casual-dining'>Casual Dining</label>
                     <input type="checkbox" checked name="filter" id="fine-dining" onchange="filterMarkers(this)">
