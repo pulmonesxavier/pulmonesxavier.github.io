@@ -44,6 +44,10 @@
                 font-weight: 300;
             }
 
+            .desc{
+                font-weight: 300;
+            }
+
             span{
                 display:block;
             }
@@ -68,7 +72,7 @@
                         <h1 id="rest-name"></h1>
                         <h3 id="opening-hrs"></h3>
                     </div>
-                    <div>
+                    <div class="desc">
                         <span id="specialties"></span>
                         <span id="ave-num-customers"></span>
                         <span id="num-restaurants"></span>
@@ -125,7 +129,7 @@
 
                 let restaurant_data = geoData.features[marker.id]
                 document.getElementById("rest-name").innerHTML = restaurant_data.properties.name;
-                document.getElementById("opening-hrs").innerHTML = "Operating hours: " +restaurant_data.properties.opening-hrs;
+                document.getElementById("opening-hrs").innerHTML = "Operating hours: " +restaurant_data.properties.opening_hrs;
                 document.getElementById("specialties").innerHTML = "Specialties: " + restaurant_data.properties.specialty.join(", ");
                 document.getElementById("ave-num-customers").innerHTML = "Daily average number of customers: " +restaurant_data.properties.ave_daily_customers;
                 if(currLocMarker){
