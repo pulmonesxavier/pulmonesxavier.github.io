@@ -14,7 +14,7 @@
                 "type": "casual-dining",
                 "specialty": ["Cocktails", "Pork Belly"],
                 "ave_daily_customers": 136,
-                "opening-hrs": "11am - 10pm"
+                "opening_hrs": "11am - 10pm"
             }
         },
         {
@@ -29,7 +29,7 @@
                 "type": "fine-dining",
                 "specialty": ["Seafood", "Steak"],
                 "ave_daily_customers": 60,
-                "opening-hrs": "11am - 10pm"
+                "opening_hrs": "11am - 10pm"
             }
         },
         {
@@ -44,7 +44,7 @@
                 "type": "casual-dining",
                 "specialty": ["Ramen"],
                 "ave_daily_customers": 124,
-                "opening-hrs": "11am - 10pm"
+                "opening_hrs": "11am - 10pm"
             }
         },
         {
@@ -59,7 +59,7 @@
                 "type": "casual-dining",
                 "specialty": ["Steak"],
                 "ave_daily_customers": 73,
-                "opening-hrs": "10am - 11pm"
+                "opening_hrs": "10am - 11pm"
             }
         },
         {
@@ -89,7 +89,7 @@
                 "type": "buffet",
                 "specialty": ["International Cuisine"],
                 "ave_daily_customers": 300,
-                "opening-hrs": "8am - 10pm"
+                "opening_hrs": "8am - 10pm"
             }
         }
     ]
