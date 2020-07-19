@@ -41,7 +41,7 @@
                 "name": "Ramen Yushoken",
                 "type": "casual-dining",
                 "specialty": ["Ramen"],
-                "ave_daily_customers": 200
+                "ave_daily_customers": 124
             }
         },
         {
@@ -65,11 +65,25 @@
                 "coordinates": [10.335593, 123.896803]
             },
             "properties": {
-                "id": 1,
+                "id": 4,
                 "name": "Anzani",
                 "type": "fine-dining",
-                "specialty": ["Cocktails", "Mediterranean"],
-                "ave_daily_customers": 60
+                "specialty": ["Cocktails", "Mediterranean Cuisine"],
+                "ave_daily_customers": 45
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [10.309887, 123.919568]
+            },
+            "properties": {
+                "id": 5,
+                "name": "Feria",
+                "type": "buffet",
+                "specialty": ["International Cuisine"],
+                "ave_daily_customers": 300
             }
         }
     ]
