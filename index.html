@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
         <style>
             /* Set the size of the div element that contains the map */
             #map{
@@ -12,15 +13,31 @@
                 margin: 0px;
                 height: 100%;
                 width: 100%;
+                font-family: 'Open Sans', sans-serif;
             }
 
             #pane{
                 background-color: white;
-                height: 90%;
+                height: 30%;
                 width: 400px;
                 position: absolute;
                 top: 5%;
                 z-index: 3;
+                background-color: #fff;
+                padding: 60px 20px 50px;
+                margin: 30px    ;
+                text-align: left;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                border-radius: 8px;
+                border: 0;
+                -webkit-box-shadow: 0px 10px 20px rgba(168, 174, 182, .18);
+                box-shadow: 0px 10px 20px rgba(168, 174, 182, .18);
             }
         </style>
     </head>
@@ -30,6 +47,7 @@
             <div id="map" onkeydown="downShiftKeyMap(event)" onkeyup="upShiftKeyMap(event)"></div>
             <div id="pane">
                 <div>
+                    <h2>Filter Restaurants:</h2>
                     <input type="checkbox" checked name="filter" id="casual-dining" onchange="filterMarkers(this)">
                     <label for='casual-dining'>Casual Dining</label>
                     <input type="checkbox" checked name="filter" id="fine-dining" onchange="filterMarkers(this)">
@@ -39,7 +57,6 @@
                 </div>
                 <div>
                     <span id="specialties"></span>
-                    <span>Daily Average Number of Customers:</span>
                     <span id="ave-num-customers"></span>
                     <span id="num-restaurants"></span>
                 </div>
@@ -94,7 +111,7 @@
 
                 let restaurant_data = geoData.features[marker.id]
                 document.getElementById("specialties").innerHTML = "Specialties: " + restaurant_data.properties.specialty.join(", ");
-                document.getElementById("ave-num-customers").innerHTML = restaurant_data.properties.ave_daily_customers;
+                document.getElementById("ave-num-customers").innerHTML = "Daily average number of customers " +restaurant_data.properties.ave_daily_customers;
                 if(currLocMarker){
                     calculateRoute(marker.position);
                 }else{
