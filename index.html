@@ -39,6 +39,10 @@
                 -webkit-box-shadow: 0px 10px 20px rgba(168, 174, 182, .18);
                 box-shadow: 0px 10px 20px rgba(168, 174, 182, .18);
             }
+
+            span{
+                display:block;
+            }
         </style>
     </head>
     <body>
@@ -226,8 +230,6 @@
                         mapBox = null;
                     }
 
-                    console.log(isBoxComplete, "123mouseUpisBoxComplete")
-
                     mapBox = new google.maps.Rectangle({
                         map: map,
                         bounds: new google.maps.LatLngBounds(e.latLng,e.latLng),
@@ -244,11 +246,7 @@
                 if (mapBox !==null){
                     if (isBoxComplete !== true){
                         mapBox.setBounds(mapBox.getBounds().extend(e.latLng))
-                    }else{
-                        console.log("mousemo    ve not null")
                     }
-                }else{
-                }
             });
 
             google.maps.event.addListener(map, 'mouseup', function (e) {
@@ -256,9 +254,6 @@
                     isBoxComplete = true;
                     map.setOptions({ draggable: true} );
                     countRestaurantsWithinBounds(mapBox.bounds);
-                    console.log(mapBox, "mapcox")
-                }else{
-                    console.log("mouseup not null")
                 }
             });
         }
@@ -305,14 +300,12 @@
         function downShiftKeyMap(event) {
             if (event.keyCode == 16) {
                 shiftisDown = true;
-                console.log(event, "shift down")
             }
         }
 
         function upShiftKeyMap(event) {
             if (event.keyCode == 16) {
                 shiftisDown = false;
-                console.log(event, "shift up")
             }
         }
 
